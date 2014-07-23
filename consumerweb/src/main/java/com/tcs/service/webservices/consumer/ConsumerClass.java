@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.tcs.service.webservices.consumer;
 
@@ -14,16 +14,16 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.WebServiceRef;
 
 /**
- * @author 9501800
+ * @author Prabu S B
  *
  */
 public class ConsumerClass {
-	
+
 
 	//@WebServiceRef(wsdlLocation="http://localhost:8082/webserviceprovider-web/Addnumber?wsdl")
 	//static AddNumbersService addNumbersService = new AddNumbersService("http://localhost:8082/webserviceprovider-web/Addnumber?wsdl", "addNumbers");
-	
-	
+
+
 	public static void main(String[] args) {
 	    try {
 	    	ConsumerClass client = new ConsumerClass();
@@ -32,9 +32,9 @@ public class ConsumerClass {
 	      e.printStackTrace();
 	    }
 	  }
-	
-	
-	
+
+
+
 	public void doTest(String[] args) {
 	    try {
 	    	URL a = new URL("http://localhost:8082/webserviceprovider-web/Addnumber?wsdl");
@@ -46,7 +46,7 @@ public class ConsumerClass {
 	    	reqAddnumbersrequest.setFirstNumber(3);
 	    	reqAddnumbersrequest.setSecondNumber(2);
 	    	Addnumbersresponse response = port.addNumbers(reqAddnumbersrequest);
-	      
+
 	    	System.out.println("Addedvalue:" + response.getResult());
 	    } catch(Exception e) {
 	      e.printStackTrace();

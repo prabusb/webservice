@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.tcs.service.webservices.consumer;
 
@@ -10,15 +10,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 /**
- * @author 9501800
+ * @author Prabu S B
  *
  */
 @Controller
 @RequestMapping("/addNumber")
-public class LearnController {   
+public class LearnController {
 
     /**
-     * 
+     *
      * @param model
      * @return
      */
@@ -26,5 +26,5 @@ public class LearnController {
     public String addNumbers(HttpServletRequest request, Model model) {
     	return "addNumber";
     }
-    
+
 }
