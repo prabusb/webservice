@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- ========================================================================================== -->
+	<!--  Log4j configuration file																	-->
+	<!-- 																							-->
+	<!--  Available loggers:																		-->
+	<!--  - console         : will always append to console											-->
+	<!--  - technical_log   : used for developers to get information whats going on in the code		-->
+	<!--  - business_log    : used for business information, see what users do, and what goes wrong	-->
+	<!--  - performance_log : used for Jamon performance logging									-->
+	<!-- ========================================================================================== -->
+
+	<!-- ==================== -->
+	<!-- Appender definitions -->
+	<!-- ==================== -->
+	
+	<appender name="null_appender" class="org.apache.log4j.varia.NullAppender"/>
+	
+	<appender name="console_appender" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p %c{1} - %m%n"/>
+		</layout>
+	</appender>
+	
+	<appender name="soap_message_log_appender" class="org.apache.log4j.FileAppender">
+		<param name="File" value="d:/logs/soapmessage.log"/>
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">			
+			<param name="ConversionPattern" value="%d %X{sessionId} - %m%n"/>
+		</layout>
+	</appender>	
+	
+
+	
+	
+	<!-- ================== -->
+	<!-- Define loggers     -->
+	<!-- add appenders and  -->
+	<!-- specify log level  -->
+	<!-- ================== -->
+	
+	<logger name="console" additivity="false">
+		<level value="DEBUG"/> 
+		<appender-ref ref="console_appender" />
+	</logger>
+		
+	<logger name="soap_message_log" additivity="false">
+		<level value="DEBUG"/> 
+		<appender-ref ref="soap_message_log_appender" />
+	</logger>
+
+   				
+	<!-- =================================== -->
+	<!-- The rootlogger, used for everything -->
+	<!-- that isn't specified above          -->
+	<!-- =================================== -->
+	<root>
+		<priority value="ERROR"/>
+		<appender-ref ref="console_appender"/>
+	</root>
+		
+</log4j:configuration>

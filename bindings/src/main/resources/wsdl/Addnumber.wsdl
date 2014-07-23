@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:curr="http://www.tcs.com/service/webservice/wsdl/Addnumber.wsdl" xmlns:addnumbersrequest="http://www.tcs.com/service/webservice/addnumbers/addnumbersrequest/request" xmlns:addnumbersresponse="http://www.tcs.com/service/webservice/addnumbers/addnumbersresponse/response" targetNamespace="http://www.tcs.com/service/webservice/wsdl/Addnumber.wsdl">
+	<types>
+		<xs:schema>
+			<xs:import namespace="http://www.tcs.com/service/webservice/addnumbers/addnumbersrequest/request" schemaLocation="xsd/addnumbersrequest.xsd"/>
+			<xs:import namespace="http://www.tcs.com/service/webservice/addnumbers/addnumbersresponse/response" schemaLocation="xsd/addnumbersresponse.xsd"/>
+		</xs:schema>
+	</types>
+	<message name="addnumbersrequestMsg">
+		<part name="theInputMessage" element="addnumbersrequest:addnumbersrequest"/>
+	</message>
+	<message name="addnumbersresponseMsg">
+		<part name="theOutputMessage" element="addnumbersresponse:addnumbersresponse"/>
+	</message>
+	<portType name="AddNumbersPortType">
+		<operation name="addNumbers">
+			<input name="addnumbersrequest" message="curr:addnumbersrequestMsg"/>
+			<output name="addnumbersresponse" message="curr:addnumbersresponseMsg"/>
+		</operation>
+	</portType>
+	<binding name="AddNumbersSOAPBinding" type="curr:AddNumbersPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="addNumbers">
+			<soap:operation soapAction="addNumbers" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="AddNumbersService">
+		<port name="AddNumbersSOAPPort" binding="curr:AddNumbersSOAPBinding">
+			<soap:address location="http://localhost:9081/provider-web/Addnumber"/>
+		</port>
+	</service>
+</definitions>

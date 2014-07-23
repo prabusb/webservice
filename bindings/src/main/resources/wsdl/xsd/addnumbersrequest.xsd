@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSpy v2011 (http://www.altova.com) by KLM (KLM Royal Dutch Airlines) -->
+<xs:schema xmlns="http://www.tcs.com/service/webservice/addnumbers/addnumbersrequest/request" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.tcs.com/service/webservice/addnumbers/addnumbersrequest/request">
+	<!-- addnumbersrequest -->
+	<xs:element name="addnumbersrequest">
+		<xs:complexType>
+			<xs:sequence>								
+				<xs:element name="firstNumber" type="xs:int" minOccurs="1"/>
+				<xs:element name="secondNumber" type="xs:int" minOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

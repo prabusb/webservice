@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+           
+	
+	<bean id="calculatorService" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+	    <property name="serviceInterface" value="com.tcs.service.webservice.wsdl.addnumber.AddNumbersPortType"/>
+	    <property name="wsdlDocumentUrl" value="http://localhost:8082/webserviceprovider-web/Addnumber?wsdl"/>
+	    <property name="namespaceUri" value="http://www.tcs.com/service/webservice/wsdl/Addnumber.wsdl"/>	    
+	    <property name="serviceName" value="AddNumbersService"/>
+	    <property name="portName" value="AddNumbersPortType"/>
+	</bean>
+	
+	<bean id="calculatorServiceConnector" class="com.tcs.service.webservices.consumer.WebServiceconnector">
+		<property name="calculatorServicePortType">
+			<ref bean="calculatorService"/>
+		</property>
+	</bean>
+	
+	
+</beans>
